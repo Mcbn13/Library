@@ -10,7 +10,6 @@ namespace Library.MVCWebUI.Models
     public class BookListViewModel
     {
         public List<Book> Books { get; set; }
-
         public List<Category> Categories { get; set; }
         public int PageCount { get; internal set; }
         public int PageSize { get; internal set; }

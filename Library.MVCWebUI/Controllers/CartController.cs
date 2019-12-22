@@ -1,4 +1,6 @@
 ﻿using Library.Business.Abstract;
+using Library.Entities.Concrete;
+using Library.MVCWebUI.Models;
 using Library.MVCWebUI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -39,44 +41,44 @@ namespace Library.MVCWebUI.Controllers
             return RedirectToAction("Index", "Book");
         }
 
-        //public ActionResult List()
-        //{
-        //    var cart = _cartSessionService.GetCart();
-        //    CartListViewModel cartListViewModel = new CartListViewModel
-        //    {
-        //        Cart = cart
-        //    };
-        //    return View(cartListViewModel);
-        //}
+        public ActionResult List()
+        {
+            var cart = _cartSessionService.GetCart();
+            CartListViewModel cartListViewModel = new CartListViewModel
+            {
+                Cart = cart
+            };
+            return View(cartListViewModel);
+        }
 
-        //public ActionResult Remove(int bookId)
-        //{
-        //    var cart = _cartSessionService.GetCart();
-        //    _cartService.RemoveFromCart(cart, bookId);
-        //    _cartSessionService.SetCart(cart);
-        //    TempData.Add("message", String.Format("Your book was successfully removed from the cart!"));
-        //    return RedirectToAction("List");
-        //}
+        public ActionResult Remove(int bookId)
+        {
+            var cart = _cartSessionService.GetCart();
+            _cartService.RemoveFromCart(cart, bookId);
+            _cartSessionService.SetCart(cart);
+            TempData.Add("message", String.Format("Your book was successfully removed from the cart!"));
+            return RedirectToAction("List");
+        }
 
 
-        //public ActionResult Complete()
-        //{
-        //    var shippingDetailsViewModel = new ShippingDetailsViewModel
-        //    {
-        //        ShippingDetails = new ShippingDetails()
-        //    };
-        //    return View(shippingDetailsViewModel);
-        //}
+        public ActionResult Complete()
+        {
+            var userDetailsViewModel = new UserDetailsViewModel
+            {
+                User = new User()
+            };
+            return View(userDetailsViewModel);
+        }
 
-        //[HttpPost]
-        //public ActionResult Complete(ShippingDetails shippingDetails)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View();
-        //    }
-        //    TempData.Add("message", String.Format("Thank you {0}, you order is in process", shippingDetails.FirstName));
-        //    return View();
-        //}
+        [HttpPost]
+        public ActionResult Complete(User user)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            TempData.Add("message", String.Format("Thank you {0}, you order is in process", user.Name));
+            return View();
+        }
     }
 }

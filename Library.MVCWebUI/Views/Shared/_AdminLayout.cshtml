@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -10,7 +11,7 @@
     <script src="/node_modules/jquery-validation/dist/jquery.validate.js"></script>
     <script src="/node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 </head>
-<body>  
+<body>
     <div class="col-md-12">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
@@ -22,34 +23,31 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Library</a>
+                    <a class="navbar-brand" href="#">Library Admin Panel</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a asp-controller="Account" asp-action="Login">Admin<span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a asp-controller="Book" asp-action="Index">Library Store<span class="sr-only">(current)</span></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Your Cart<span class="caret"></span></a>
-                            @await Component.InvokeAsync("CartSummary")
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+                            @await Component.InvokeAsync("UserSummary")
                         </li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
     </div>
-    <div class="col-md-2">
-        @await Component.InvokeAsync("CategoryList")
-    </div>
-    <div class="col-md-10">
+    <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         @if (TempData["message"] != null)
         {
             <div class="alert alert-info" role="alert">@TempData["message"]</div>
         }
         @RenderBody()
     </div>
-    <div class="col-md-12">Footer</div>
+    <div class="col-md-12"></div>
 </body>
 </html>

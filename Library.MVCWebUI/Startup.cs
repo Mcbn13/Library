@@ -6,12 +6,15 @@ using Library.Business.Abstract;
 using Library.Business.Concrete;
 using Library.DataAccess.Abstract;
 using Library.DataAccess.Concrete.EntityFrameWork;
+using Library.MVCWebUI.Entities;
 using Library.MVCWebUI.Middlewares;
 using Library.MVCWebUI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -37,6 +40,10 @@ namespace Library.MVCWebUI
             services.AddSingleton<ICartSessionService, CartSessionManager>();
             services.AddSingleton<ICartService, CartManager>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddDbContext<CustomIdentityDbContext>(options => options.UseSqlServer("Server=DESKTOP-6SV6K5Q;Database=Library;Trusted_Connection=true"));
+            services.AddIdentity<CustomIdentityUser, CustomIdentityRole>()
+                .AddEntityFrameworkStores<CustomIdentityDbContext>()
+                .AddDefaultTokenProviders();
             services.AddControllersWithViews();
             services.AddSession();
             services.AddDistributedMemoryCache();

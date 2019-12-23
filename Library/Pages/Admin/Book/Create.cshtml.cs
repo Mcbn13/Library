@@ -23,10 +23,16 @@ namespace Library.Pages.Admin.Book
 
         public IActionResult OnGet()
         {
-        ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "FirstName");
-        ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
-        ViewData["LanguageId"] = new SelectList(_context.Languages, "LanguageId", "LanguageName");
-        ViewData["PublisherId"] = new SelectList(_context.Publishers, "PublisherId", "PublisherName");
+            var authors = _context.Authors.Where(x=>x.AuthorId!=0).Select(x => new
+            {
+                AuthorId = x.AuthorId,
+                Description = string.Format("{0} {1}",x.FirstName,x.LastName)
+            }).ToList();
+
+            ViewData["AuthorId"] = new SelectList(authors, "AuthorId", "Description");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
+            ViewData["LanguageId"] = new SelectList(_context.Languages, "LanguageId", "LanguageName");
+            ViewData["PublisherId"] = new SelectList(_context.Publishers, "PublisherId", "PublisherName");
             return Page();
         }
 

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Library.Data;
 using Library.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Library.Pages.Admin.Language
 {
+    [Authorize(Roles = "Admin")]
     public class DetailsModel : PageModel
     {
         private readonly Library.Data.ApplicationDbContext _context;

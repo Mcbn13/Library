@@ -10,7 +10,7 @@ namespace Library.Models
         public int PublisherId { get; set; }
 
         [Required]
-        [Display(Name = "Dil")]
+        [Display(Name = "Yayın Evi")]
         public string PublisherName { get; set; }
 
         public virtual ICollection<Book> Book { get; set; }

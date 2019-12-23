@@ -10,7 +10,7 @@ namespace Library.Models
         [Key]
         public int CategoryId { get; set; }
         [Required]
-        [Display(Name="Category Name")]
+        [Display(Name="Kategori Adı")]
         public string Name { get; set; }
 
         public virtual ICollection<Book> Book { get; set; }

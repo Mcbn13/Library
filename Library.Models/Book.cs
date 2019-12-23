@@ -15,6 +15,10 @@ namespace Library.Models
         [Required]
         public string Title { get; set; }
 
+        [Display(Name = "Özet")]
+        [Required]
+        public string Description { get; set; }
+
         [Display(Name = "Fiyat")]
         [Required]
         public decimal Price { get; set; }

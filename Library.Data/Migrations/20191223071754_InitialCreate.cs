@@ -234,6 +234,7 @@ namespace Library.Data.Migrations
                     BookId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(maxLength: 50, nullable: false),
+                    Description = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     UnitInStock = table.Column<short>(nullable: false),
                     Page = table.Column<int>(nullable: false),

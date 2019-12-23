@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Library.Data;
 using Library.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Library.Pages.Customer.Home
 {
@@ -20,7 +19,7 @@ namespace Library.Pages.Customer.Home
             _context = context;
         }
 
-        public IList<Book> Book { get;set; }
+        public IList<Library.Models.Book> Book { get;set; }
 
         public async Task OnGetAsync()
         {

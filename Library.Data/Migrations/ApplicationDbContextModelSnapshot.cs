@@ -52,6 +52,10 @@ namespace Library.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<short>("Edition")
                         .HasColumnType("smallint");
 

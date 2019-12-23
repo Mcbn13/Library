@@ -9,7 +9,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="btn btn-success" asp-page="./Create">Create New <i class="fas fa-plus"></i></a>
 </p>
 <table class="table">
     <thead>
@@ -27,9 +27,9 @@
                 @Html.DisplayFor(modelItem => item.LanguageName)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.LanguageId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.LanguageId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.LanguageId">Delete</a>
+                <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.LanguageId">Edit</a> |
+                <a class="btn btn-warning" asp-page="./Details" asp-route-id="@item.LanguageId">Details</a> |
+                <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.LanguageId">Delete</a>
             </td>
         </tr>
 }

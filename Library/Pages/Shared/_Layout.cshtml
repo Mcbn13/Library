@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Library</title>
+    <title>@ViewData["Title"] - @SharedLocalizer["Library"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand text-dark" asp-area="" asp-page="/Index">LIBRARY</a>
+                <a class="navbar-brand text-dark" asp-area="" asp-page="/Index">@SharedLocalizer["Library"]</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,30 +21,43 @@
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">@SharedLocalizer["Home"]</a>
                         </li>
                         <li>
                             @if (User.IsInRole("Admin"))
                             {
                                 <div class="nav-item dropdown">
                                     <a class="nav-link text-dark dropdown-toggle" href="#" role="button" id="navbarDropDown" data-toggle="dropdown">
-                                        Admin
+                                        @SharedLocalizer["Admin"]
                                     </a>
 
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" asp-page="/Admin/Author/Index">Yazar</a>
-                                        <a class="dropdown-item" asp-page="/Admin/Book/Index">Kitap</a>
-                                        <a class="dropdown-item" asp-page="/Admin/Category/Index">Kategori</a>
+                                        <a class="dropdown-item" asp-page="/Admin/Book/Index">@SharedLocalizer["Book"]</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" asp-page="/Admin/Language/Index">Dil</a>
-                                        <a class="dropdown-item" asp-page="/Admin/Publisher/Index">Yayın Evi</a>
+                                        <a class="dropdown-item" asp-page="/Admin/Author/Index">@SharedLocalizer["Author"]</a>
+                                        <a class="dropdown-item" asp-page="/Admin/Category/Index">@SharedLocalizer["Category"]</a>
+                                        <a class="dropdown-item" asp-page="/Admin/Language/Index">@SharedLocalizer["Language"]</a>
+                                        <a class="dropdown-item" asp-page="/Admin/Publisher/Index">@SharedLocalizer["Publisher"]</a>
                                     </div>
                                 </div>
                             }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="/Customer/Contact/Index">Contact</a>
+                            <a class="nav-link text-dark" asp-page="/Customer/Contact/Index">@SharedLocalizer["Contact"]</a>
                         </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-route-culture="en-US">En</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-route-culture="tr-TR">Tr</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -58,7 +71,7 @@
 
     <footer class="border-top footer bg-light text-dark">
         <div class="container">
-            &copy; 2019 - Library - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2019 - @SharedLocalizer["Library"] - <a asp-area="" asp-page="/Privacy">@SharedLocalizer["Privacy"]</a>
         </div>
     </footer>
 

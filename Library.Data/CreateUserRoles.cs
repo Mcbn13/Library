@@ -33,15 +33,15 @@ namespace Library.Data
 
             _userManager.CreateAsync(new ApplicationUser
             {
-                UserName = "miray@gmail.com",
-                Email = "miray@gmail.com",
+                UserName = "admin@gmail.com",
+                Email = "admin@gmail.com",
                 EmailConfirmed = true,
-                FirstName = "Miray",
-                LastName = "Çoban"
-            }, "Miray1234*").GetAwaiter().GetResult();
+                FirstName = "admin",
+                LastName = "admin"
+            }, "Admin1234*").GetAwaiter().GetResult();
 
             ApplicationUser user = _db.ApplicationUser.Where
-                (u => u.Email == "miray@gmail.com").FirstOrDefault();
+                (u => u.Email == "admin@gmail.com").FirstOrDefault();
 
            _userManager.AddToRoleAsync(user, "Admin").GetAwaiter().GetResult();
         }

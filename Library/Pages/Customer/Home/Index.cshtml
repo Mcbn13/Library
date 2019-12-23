@@ -1,0 +1,137 @@
+﻿@page
+@model Library.Pages.Customer.Home.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<h1>Ürünler</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Book)
+        {
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid6">
+                    <div class="product-image6">
+                        <a href="#">
+                            <img class="pic-1" src="@item.ImageThumbnailUrl">
+                        </a>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><a href="#">@item.Title</a></h3>
+                        <div class="price">
+                            @item.Price.ToString("c")
+                            <span>@item.Price.ToString("c")</span>
+                        </div>
+                    </div>
+                    <ul class="social">
+                        
+                        <li><a data-tip="Görüntüle" asp-action="AddToCart" asp-route-id="@item.BookId"><i class="fa fa-eye"></i></a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<hr>
+
+@*<h1>Index</h1>
+
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].UnitInStock)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].Page)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].Edition)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].PublishDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].ImageUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].ImageThumbnailUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].Language)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].Publisher)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Book[0].Author)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Book) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitInStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Page)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edition)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImageThumbnailUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language.LanguageName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.FirstName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.BookId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.BookId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.BookId">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
